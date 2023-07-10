@@ -1,0 +1,47 @@
+<div class="employee-dashboard" style="background-color: rgb(157, 157, 206);">
+  
+  <div class="header-container">
+    <h2>Employee Dashboard - O&T POC</h2>
+  </div>
+
+  <div class="search-bar">
+    <div class="header-container">
+      <h2> Filter Data
+    <input type="text" placeholder="Search" [(ngModel)]="query" (input)="this.filterEmployees()">
+    <i class="fas fa-search"></i> </h2>
+  </div>
+
+
+  <table class="employee-table">
+    <thead>
+      <tr>
+        <th (click)="sortEmployees('employeeId')">Employee Id <i class="fas" [ngClass]="{'fa-sort': sortField !== 'employeeId', 'fa-sort-up': sortField === 'name' && sortDirection === 'asc', 'fa-sort-down': sortField === 'employeeId' && sortDirection === 'desc'}"></i></th>
+        <th (click)="sortEmployees('firstName')">First Name <i class="fas" [ngClass]="{'fa-sort': sortField !== 'firstName', 'fa-sort-up': sortField === 'name' && sortDirection === 'asc', 'fa-sort-down': sortField === 'firstName' && sortDirection === 'desc'}"></i></th>
+        <th (click)="sortEmployees('lastName')">Last Name <i class="fas" [ngClass]="{'fa-sort': sortField !== 'lastName', 'fa-sort-up': sortField === 'name' && sortDirection === 'asc', 'fa-sort-down': sortField === 'lastName' && sortDirection === 'desc'}"></i></th>
+        <th (click)="sortEmployees('salary')">Salary<i class="fas" [ngClass]="{'fa-sort': sortField !== 'salary', 'fa-sort-up': sortField === 'name' && sortDirection === 'asc', 'fa-sort-down': sortField === 'salary' && sortDirection === 'desc'}"></i></th>
+        <th (click)="sortEmployees('email')">Email <i class="fas" [ngClass]="{'fa-sort': sortField !== 'email', 'fa-sort-up': sortField === 'email' && sortDirection === 'asc', 'fa-sort-down': sortField === 'email' && sortDirection === 'desc'}"></i></th>
+        <th (click)="sortEmployees('department')">Department <i class="fas" [ngClass]="{'fa-sort': sortField !== 'department', 'fa-sort-up': sortField === 'department' && sortDirection === 'asc', 'fa-sort-down': sortField === 'department' && sortDirection === 'desc'}"></i></th>
+        <th (click)="sortEmployees('position')">Position <i class="fas" [ngClass]="{'fa-sort': sortField !== 'position', 'fa-sort-up': sortField === 'position' && sortDirection === 'asc', 'fa-sort-down': sortField === 'position' && sortDirection === 'desc'}"></i></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of filteredEmployees">
+        <td>{{ employee.employeeId }}</td>
+        <td>{{ employee.firstName }}</td>
+        <td>{{ employee.lastName }}</td>
+        <td>{{ employee.salary }}</td>
+        <td>{{ employee.email }}</td>
+        <td>{{ employee.department }}</td>
+        <td>{{ employee.position }}</td>
+      </tr>
+    </tbody>
+  </table>
+ 
+  <div class="search-bar">
+    <div class="header-container">
+      <h2>Export Employee Data
+        <button class="export-button" (click)="exportData()">Export Data</button> </h2>
+  </div>
+
+</div>
+
